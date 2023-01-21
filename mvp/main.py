@@ -3,6 +3,8 @@
 from fastapi import FastAPI
 import requests
 
+from clustering import user_id_cluster
+
 app = FastAPI()
 
 @app.get("/user_info/{user_id}/{user_request}")
@@ -28,8 +30,10 @@ async def user_info(user_id: int, user_request: str):
 
 @app.get("/user_groups/{user_id}")
 async def user_groups(user_id: int):
+    stats  = user_id_cluster(user_id)
     return {
         "user_id": user_id,
         "data": {
-        "user_group": "Hello World"} 
+        "user_net_balance_gap": stats["gap_CARGO/ABONO"],
+        "user_net_balance_cluster": stats["cluster_CARGO/ABONO"]} 
     }

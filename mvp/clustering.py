@@ -49,9 +49,10 @@ def get_user_cluster_stats(df_train, df_test, user_id, delta_time=30, end_date=d
     return user_dict
 
 
-if __name__ == "__main__":
+def user_id_cluster(user_id) -> dict:
     df_train = pd.read_csv("data_files/ingresos_egresos_train.csv") 
     df_test = pd.read_csv("data_files/ingresos_egresos_test.csv")
-    user_id = 202
     end_date = date.today()
     user_dict = get_user_cluster_stats(df_train, df_test, user_id, 30, end_date)
+    return user_dict
+
