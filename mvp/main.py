@@ -5,6 +5,10 @@ import requests
 
 from clustering import user_id_cluster
 
+"""
+console prompt:
+python -m uvicorn main:app --reload
+"""
 app = FastAPI()
 
 @app.get("/user_info/{user_id}/{user_request}")
